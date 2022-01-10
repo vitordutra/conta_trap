@@ -1,3 +1,5 @@
+import 'package:conta_trap/src/screens/begin.dart';
+import 'package:conta_trap/src/screens/history.dart';
 import 'package:conta_trap/src/screens/home.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,8 @@ class ContaTrapApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const Home(),
+        "/begin": (context) => const BeginScreen(),
+        "/history": (context) => const HistoryScreen(),
       },
     );
   }
