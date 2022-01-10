@@ -1,4 +1,4 @@
-import 'package:conta_trap/src/screens/getting_started.dart';
+import 'package:conta_trap/src/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class ContaTrapApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class ContaTrapApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => const GettingStarted(),
+        "/": (context) => const Home(),
       },
     );
   }
