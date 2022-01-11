@@ -43,6 +43,7 @@ class Home extends StatelessWidget {
                     "Histórico",
                     backgroundColor: const Color(0xFF7F55F5),
                     foregroundColor: Colors.white,
+                    borderColor: Colors.white,
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, "/history");
                     },

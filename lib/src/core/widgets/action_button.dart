@@ -5,13 +5,15 @@ class ActionButton extends StatelessWidget {
   final String text;
   final Color foregroundColor;
   final Color backgroundColor;
+  final Color borderColor;
   final VoidCallback onPressed;
 
   const ActionButton(
     this.text, {
     Key? key,
-    this.foregroundColor = const Color(0xFFF6F6F9),
-    this.backgroundColor = const Color(0xFFFA4A0C),
+    this.foregroundColor = const Color(0xFFFFFFFF),
+    this.backgroundColor = const Color(0xFF7F55F5),
+    this.borderColor = const Color(0xFF7F55F5),
     required this.onPressed,
   }) : super(key: key);
 
@@ -27,7 +29,7 @@ class ActionButton extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 2.0,
-            color: Colors.white,
+            color: borderColor,
           ),
           borderRadius: BorderRadius.circular(15),
           color: backgroundColor,
