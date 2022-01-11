@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
                     backgroundColor: Colors.white,
                     foregroundColor: const Color(0xFF7F55F5),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/begin");
+                      Navigator.pushNamed(context, "/begin");
                     },
                   ),
                 ],
@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
                     foregroundColor: Colors.white,
                     borderColor: Colors.white,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/history");
+                      Navigator.pushNamed(context, "/history");
                     },
                   ),
                 ],
