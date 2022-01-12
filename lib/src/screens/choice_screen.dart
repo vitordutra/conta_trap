@@ -39,7 +39,7 @@ class _ChoiceScreenState extends State<ChoiceScreen>
     super.initState();
 
     cardNum = 2 * (widget.arguments.players.length * 3);
-    
+
     choicesController = ChoicesController(
         players: widget.arguments.players,
         billAmount: widget.arguments.billAmount);
@@ -121,108 +121,109 @@ class _ChoiceScreenState extends State<ChoiceScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-          child: Container(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              // Timer
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Timer
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(right: 8),
-                        child: Icon(
-                          Icons.timer,
-                          color: primaryColor,
-                          size: 32,
-                        ),
-                      ),
-                      buildTimer(context),
-                    ],
+                  Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    child: Icon(
+                      Icons.timer,
+                      color: primaryColor,
+                      size: 32,
+                    ),
                   ),
-                  // Card
-                  Expanded(
-                      child: Container(
-                          // height: 400,
-                          margin: const EdgeInsets.symmetric(vertical: 32),
-                          child: TinderSwapCard(
-                            animDuration: 300,
-                            orientation: AmassOrientation.TOP,
-                            totalNum: cardNum,
-                            stackNum: 3,
-                            swipeEdge: 4.0,
-                            minWidth: (screenSize.width - 32) * 0.9,
-                            maxWidth: screenSize.width - 32,
-                            minHeight: cardHeight * 0.9,
-                            maxHeight: cardHeight,
-                            cardBuilder: (context, index) => index % 2 == 0
-                                ? PlayerTurnCard(
-                                    text:
-                                        "${choicesController.getCurrentPlayer()},\né a sua vez",
-                                    caption: "Arraste para qualquer lado")
-                                : ChoiceCard(
-                                    choice:
-                                        choicesController.getCurrentChoice()),
-                            cardController: controller = CardController(),
-                            swipeCompleteCallback:
-                                (CardSwipeOrientation orientation, int index) {
-                              if (orientation == CardSwipeOrientation.LEFT) {
-                                handleReject();
-                              } else if (orientation ==
-                                  CardSwipeOrientation.RIGHT) {
-                                handleAccept();
-                              }
-                            },
-                          ))),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: isWaitingPlayer
-                        ? <Widget>[
-                            FAB(
-                              size: 64,
-                              onPressed: () => controller.triggerRight(),
-                              child: const Image(
-                                image: AssetImage("assets/icons/check.png"),
-                                width: 28,
-                                height: 28,
-                              ),
-                            )
-                          ]
-                        : <Widget>[
-                            FAB(
-                              size: 64,
-                              onPressed: () => controller.triggerLeft(),
-                              child: const Image(
-                                image: AssetImage("assets/icons/close.png"),
-                                width: 28,
-                                height: 28,
-                              ),
-                            ),
-                            FAB(
-                              size: 64,
-                              onPressed: () {
-                                resetTimer();
-                              },
-                              child: const Image(
-                                image: AssetImage("assets/icons/redo.png"),
-                                width: 28,
-                                height: 28,
-                              ),
-                            ),
-                            FAB(
-                              size: 64,
-                              onPressed: () => controller.triggerRight(),
-                              child: const Image(
-                                image: AssetImage("assets/icons/check.png"),
-                                width: 28,
-                                height: 28,
-                              ),
-                            )
-                          ],
-                  )
+                  buildTimer(context),
                 ],
-              ))),
+              ),
+              // Card
+              Expanded(
+                  child: Container(
+                      // height: 400,
+                      margin: const EdgeInsets.symmetric(vertical: 32),
+                      child: TinderSwapCard(
+                        animDuration: 300,
+                        orientation: AmassOrientation.TOP,
+                        totalNum: cardNum,
+                        stackNum: 3,
+                        swipeEdge: 4.0,
+                        minWidth: (screenSize.width - 32) * 0.9,
+                        maxWidth: screenSize.width - 32,
+                        minHeight: cardHeight * 0.9,
+                        maxHeight: cardHeight,
+                        cardBuilder: (context, index) => index % 2 == 0
+                            ? PlayerTurnCard(
+                                text:
+                                    "${choicesController.getCurrentPlayer()},\né a sua vez",
+                                caption: "Arraste para qualquer lado")
+                            : ChoiceCard(
+                                choice: choicesController.getCurrentChoice()),
+                        cardController: controller = CardController(),
+                        swipeCompleteCallback:
+                            (CardSwipeOrientation orientation, int index) {
+                          if (orientation == CardSwipeOrientation.LEFT) {
+                            handleReject();
+                          } else if (orientation ==
+                              CardSwipeOrientation.RIGHT) {
+                            handleAccept();
+                          }
+                        },
+                      ))),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: isWaitingPlayer
+                    ? <Widget>[
+                        FAB(
+                          size: 64,
+                          onPressed: () => controller.triggerRight(),
+                          child: const Image(
+                            image: AssetImage("assets/icons/check.png"),
+                            width: 28,
+                            height: 28,
+                          ),
+                        )
+                      ]
+                    : <Widget>[
+                        FAB(
+                          size: 64,
+                          onPressed: () => controller.triggerLeft(),
+                          child: const Image(
+                            image: AssetImage("assets/icons/close.png"),
+                            width: 28,
+                            height: 28,
+                          ),
+                        ),
+                        FAB(
+                          size: 64,
+                          onPressed: () {
+                            resetTimer();
+                          },
+                          child: const Image(
+                            image: AssetImage("assets/icons/redo.png"),
+                            width: 28,
+                            height: 28,
+                          ),
+                        ),
+                        FAB(
+                          size: 64,
+                          onPressed: () => controller.triggerRight(),
+                          child: const Image(
+                            image: AssetImage("assets/icons/check.png"),
+                            width: 28,
+                            height: 28,
+                          ),
+                        )
+                      ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
