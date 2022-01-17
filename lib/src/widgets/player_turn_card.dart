@@ -13,7 +13,7 @@ class PlayerTurnCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          color: primaryColor, borderRadius: BorderRadius.circular(16)),
+          color: primaryColor, borderRadius: BorderRadius.circular(16),),
       padding: const EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
@@ -24,7 +24,7 @@ class PlayerTurnCard extends StatelessWidget {
             textAlign: TextAlign.center,
             style: const TextStyle(
                 color: Colors.white, fontSize: 32, fontWeight: FontWeight.w600),
-          ))),
+          ),)),
           Text(
             caption,
             textAlign: TextAlign.center,
