@@ -14,16 +14,18 @@ class ContaTrapApp extends StatelessWidget {
     return MaterialApp(
       title: "Conta Trap",
       theme: ThemeData(
-          primarySwatch: generateMaterialColor(const Color(0xFF7F55F5)),
-          fontFamily: 'Montserrat'),
+        primarySwatch: generateMaterialColor(const Color(0xFF7F55F5),),
+        fontFamily: 'Montserrat',
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
         "/": (context) => const Home(),
         "/choice": (context) => ChoiceScreen(
-            arguments: ChoiceScreenArgs()
-              ..billAmount = 140
-              ..players = ["Alexandre", "João Vitor", "Rafael"]),
+              arguments: ChoiceScreenArgs()
+                ..billAmount = 140
+                ..players = ["Alexandre", "João Vitor", "Rafael"],
+            ),
         // ModalRoute.of(context)?.settings.arguments as ChoiceScreenArgs),
         "/results": (context) => const ResultsScreen(),
         "/begin": (context) => const BeginScreen(),

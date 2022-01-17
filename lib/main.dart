@@ -5,8 +5,9 @@ import 'package:flutter/services.dart';
 void main() {
   // removida a cor cinza de overlay da status bar do Android
   WidgetsFlutterBinding.ensureInitialized();
+  
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-  ));
-  runApp(const ContaTrapApp());
+  ),);
+  runApp(const ContaTrapApp(),);
 }

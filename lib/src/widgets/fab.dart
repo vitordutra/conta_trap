@@ -13,14 +13,15 @@ class FAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: size,
-        width: size,
-        child: RawMaterialButton(
-          shape: const CircleBorder(),
-          fillColor: Colors.white,
-          elevation: 4,
-          child: child,
-          onPressed: onPressed,
-        ));
+      height: size,
+      width: size,
+      child: RawMaterialButton(
+        shape: const CircleBorder(),
+        fillColor: Colors.white,
+        elevation: 4,
+        child: child,
+        onPressed: onPressed,
+      ),
+    );
   }
 }

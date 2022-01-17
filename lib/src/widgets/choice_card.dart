@@ -13,27 +13,31 @@ class ChoiceCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(width: 1, color: primaryColor),
-          borderRadius: BorderRadius.circular(16)),
+        color: Colors.white,
+        border: Border.all(width: 1, color: primaryColor),
+        borderRadius: BorderRadius.circular(16),
+      ),
       padding: const EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
           Expanded(
-              child: Center(
-                  child: Text(
-            choice.action,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: primaryColor.withOpacity(0.8),
-                fontSize: 20,
-                fontWeight: FontWeight.w500),
-          ))),
+            child: Center(
+              child: Text(
+                choice.action,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: primaryColor.withOpacity(0.8),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
           Row(children: <Widget>[
             Expanded(
-                child: Divider(
-              color: primaryColor,
-            )),
+              child: Divider(
+                color: primaryColor,
+              ),
+            ),
             Container(
               child: Text(
                 "MAS",
@@ -44,18 +48,20 @@ class ChoiceCard extends StatelessWidget {
               ),
               margin: const EdgeInsets.symmetric(horizontal: 8),
             ),
-            Expanded(child: Divider(color: primaryColor)),
+            Expanded(child: Divider(color: primaryColor),),
           ]),
           Expanded(
-              child: Center(
-                  child: Text(
-            choice.consequence,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: primaryColor.withOpacity(0.8),
-                fontSize: 20,
-                fontWeight: FontWeight.w500),
-          ))),
+            child: Center(
+              child: Text(
+                choice.consequence,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: primaryColor.withOpacity(0.8),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
         ],
       ),
     );

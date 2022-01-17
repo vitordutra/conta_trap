@@ -18,6 +18,6 @@ class ResultsScreen extends StatelessWidget {
       Card(
         child: null,
       )
-    ]));
+    ]),);
   }
 }
