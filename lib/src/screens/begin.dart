@@ -58,7 +58,7 @@ class BeginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ActionButton(
-                    "Voltar",
+                    "VOLTAR",
                     backgroundColor: Colors.white,
                     foregroundColor: const Color(0xFF7F55F5),
                     onPressed: () {
@@ -71,7 +71,7 @@ class BeginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ActionButton(
-                    "Avançar",
+                    "AVANÇAR",
                     backgroundColor: const Color(0xFF7F55F5),
                     foregroundColor: Colors.white,
                     onPressed: () {

@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ActionButton(
-                    "Iniciar",
+                    "INICIAR",
                     backgroundColor: Colors.white,
                     foregroundColor: const Color(0xFF7F55F5),
                     onPressed: () {
@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ActionButton(
-                    "Histórico",
+                    "HISTÓRICO",
                     backgroundColor: const Color(0xFF7F55F5),
                     foregroundColor: Colors.white,
                     borderColor: Colors.white,
