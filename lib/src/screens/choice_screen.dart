@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:conta_trap/src/utils/choices_controller.dart';
 import 'package:conta_trap/src/widgets/choice_card.dart';
 import 'package:conta_trap/src/widgets/fab.dart';
-import 'package:conta_trap/src/classes/choice.dart';
 import 'package:conta_trap/src/widgets/player_turn_card.dart';
-import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_tindercard/flutter_tindercard.dart';
 
 class ChoiceScreenArgs {
   late List<String> players;
@@ -55,11 +55,11 @@ class _ChoiceScreenState extends State<ChoiceScreen>
   // Timer stuff
   void resetTimer() {
     timer?.cancel();
-    setState(() => duration = const Duration(minutes: 1));
+    setState(() => duration = const Duration(minutes: 1),);
   }
 
   void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (_) => addTime());
+    timer = Timer.periodic(const Duration(seconds: 1), (_) => addTime(),);
   }
 
   void addTime() {
@@ -78,11 +78,11 @@ class _ChoiceScreenState extends State<ChoiceScreen>
 
     String twoDigits(int n) => n.toString().padLeft(2, '0');
 
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    final minutes = twoDigits(duration.inMinutes.remainder(60),);
+    final seconds = twoDigits(duration.inSeconds.remainder(60),);
 
     return Text('$minutes:$seconds',
-        style: TextStyle(fontSize: 24, color: primaryColor));
+        style: TextStyle(fontSize: 24, color: primaryColor),);
   }
 
   void handleTimerStop() {}
@@ -162,7 +162,7 @@ class _ChoiceScreenState extends State<ChoiceScreen>
                                     "${choicesController.getCurrentPlayer()},\né a sua vez",
                                 caption: "Arraste para qualquer lado")
                             : ChoiceCard(
-                                choice: choicesController.getCurrentChoice()),
+                                choice: choicesController.getCurrentChoice(),),
                         cardController: controller = CardController(),
                         swipeCompleteCallback:
                             (CardSwipeOrientation orientation, int index) {
@@ -173,7 +173,7 @@ class _ChoiceScreenState extends State<ChoiceScreen>
                             handleAccept();
                           }
                         },
-                      ))),
+                      ),)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: isWaitingPlayer
