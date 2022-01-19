@@ -37,18 +37,32 @@ class _CurvePainter extends CustomPainter {
 }
 
 class CurvedHeader extends StatelessWidget {
-  const CurvedHeader({Key? key}) : super(key: key);
+  final Widget title;
+  
+  final double height;
+
+  final Widget? subtitle;
+
+  const CurvedHeader({
+    Key? key,
+    required this.title,
+    this.subtitle,
+    required this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     Color primaryColor = Theme.of(context).primaryColor;
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      height: 0.26 * screenHeight,
+      height: height,
       child: CustomPaint(
         painter: _CurvePainter(fillColor: primaryColor),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: subtitle == null ? [title] : [title, subtitle as Widget],
+        ),
       ),
     );
   }

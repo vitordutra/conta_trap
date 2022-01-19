@@ -1,4 +1,3 @@
-import 'package:conta_trap/src/core/widgets/action_button.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -8,46 +7,55 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
+
+    final Color primaryColor = Theme.of(context).primaryColor;
+
     return Scaffold(
       backgroundColor: const Color(0xFF7F55F5),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: screenHeight * 0.75,
+              Expanded(
                 child: Center(
                   child: Image.asset("assets/images/conta_trap_icon.png",
                       width: screenWidth * 0.25),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ActionButton(
-                    "INICIAR",
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF7F55F5),
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/begin");
-                    },
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    child: ElevatedButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, "/bill-input"),
+                      child: Text(
+                        "INICIAR",
+                        style: TextStyle(color: primaryColor),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        onPrimary: primaryColor,
+                      ),
+                    ),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ActionButton(
-                    "HISTÓRICO",
-                    backgroundColor: const Color(0xFF7F55F5),
-                    foregroundColor: Colors.white,
-                    borderColor: Colors.white,
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/history");
-                    },
-                  ),
+                  OutlinedButton(
+                    onPressed: () => Navigator.pushNamed(context, "/history"),
+                    child: const Text("HISTÓRICO",
+                        style: TextStyle(color: Colors.white)),
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.white,
+                      side: const BorderSide(
+                        width: 1.0,
+                        color: Colors.white,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ],

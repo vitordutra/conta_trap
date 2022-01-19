@@ -1,16 +1,30 @@
+import 'package:conta_trap/src/utils/choices_controller.dart';
+
 class Match {
   late int id;
   late List<MatchPlayer> players;
+  int? playersLength;
   late DateTime createdAt;
 
   double bill;
 
   Match({required this.bill});
 
-  Match.fromMap(Map<String, dynamic> res)
-      : createdAt = res["created_at"],
-        id = res["id"],
-        bill = res["bill"];
+  static Match fromMap(Map<String, dynamic> res) {
+    return Match(bill: res["bill"].toDouble())
+      ..createdAt = DateTime.parse(res["created_at"])
+      ..id = res["id"];
+  }
+
+  static Match fromMatchController(MatchController controller) {
+    Match match = Match(bill: controller.bill);
+
+    match.players = controller.players
+        .map((e) => MatchPlayer(bill: e.bill, name: e.name))
+        .toList();
+
+    return match;
+  }
 }
 
 class MatchPlayer {
@@ -19,7 +33,10 @@ class MatchPlayer {
 
   MatchPlayer({required this.name, required this.bill});
 
-  MatchPlayer.fromMap(Map<String, dynamic> res)
-      : name = res["name"],
-        bill = res["bill"];
+  static MatchPlayer fromMap(Map<String, dynamic> res) {
+    return MatchPlayer(
+      bill: res["bill"].toDouble(),
+      name: res["name"],
+    );
+  }
 }

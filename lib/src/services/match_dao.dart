@@ -28,9 +28,13 @@ class MatchDAO {
   Future<List<Match>> list() async {
     final Database db = await databaseHandler.initializeDB();
 
-    final List<Map<String, dynamic>> queryResult = await db.query('matches');
+    final List<Map<String, dynamic>> queryResult = await db.rawQuery(
+      'SELECT m.id, m.bill, m.created_at, COUNT(mp.id) as players FROM matches m LEFT JOIN match_players mp ON m.id = mp.match_id GROUP BY m.id;',
+    );
 
-    return queryResult.map((res) => Match.fromMap(res)).toList();
+    return queryResult
+        .map((res) => Match.fromMap(res)..playersLength = res["players"])
+        .toList();
   }
 
   Future<Match> get(int matchId) async {
@@ -40,12 +44,12 @@ class MatchDAO {
     queryResult = await db.query('matches',
         where: "id = ?", whereArgs: [matchId], limit: 1);
 
-    final match = queryResult[0];
+    final Match match = Match.fromMap(queryResult[0]);
 
     queryResult = await db
         .query('match_players', where: "match_id = ?", whereArgs: [matchId]);
 
-    return Match.fromMap(match)
+    return match
       ..players = queryResult.map((res) => MatchPlayer.fromMap(res)).toList();
   }
 }

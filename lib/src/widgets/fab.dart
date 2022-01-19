@@ -4,10 +4,15 @@ class FAB extends StatelessWidget {
   final VoidCallback? onPressed;
   final double size;
   final Widget child;
+  final bool disabled;
 
-  const FAB(
-      {Key? key, required this.child, required this.onPressed, this.size = 56})
-      : super(key: key);
+  const FAB({
+    Key? key,
+    required this.child,
+    required this.onPressed,
+    this.size = 56,
+    this.disabled = false,
+  }) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -20,7 +25,7 @@ class FAB extends StatelessWidget {
         fillColor: Colors.white,
         elevation: 4,
         child: child,
-        onPressed: onPressed,
+        onPressed: disabled ? null : onPressed,
       ),
     );
   }

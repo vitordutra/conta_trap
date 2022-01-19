@@ -23,7 +23,7 @@ class ChoiceCard extends StatelessWidget {
           Expanded(
             child: Center(
               child: Text(
-                choice.action,
+                choice.action.getText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: primaryColor.withOpacity(0.8),
@@ -53,7 +53,7 @@ class ChoiceCard extends StatelessWidget {
           Expanded(
             child: Center(
               child: Text(
-                choice.consequence,
+                choice.consequence.getText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: primaryColor.withOpacity(0.8),
